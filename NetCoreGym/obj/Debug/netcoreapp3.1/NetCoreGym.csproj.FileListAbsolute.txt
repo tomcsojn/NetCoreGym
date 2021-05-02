@@ -142,3 +142,8 @@ C:\Users\DonMa\source\repos\NetCoreGym\NetCoreGym\bin\Debug\netcoreapp3.1\Micros
 C:\Users\DonMa\source\repos\NetCoreGym\NetCoreGym\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Abstractions.dll
 C:\Users\DonMa\source\repos\NetCoreGym\NetCoreGym\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Binder.dll
 C:\Users\DonMa\source\repos\NetCoreGym\NetCoreGym\obj\Debug\netcoreapp3.1\NetCoreGym.csprojAssemblyReference.cache
+C:\Users\DonMa\source\repos\NetCoreGym\NetCoreGym\bin\Debug\netcoreapp3.1\Microsoft.OpenApi.dll
+C:\Users\DonMa\source\repos\NetCoreGym\NetCoreGym\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\DonMa\source\repos\NetCoreGym\NetCoreGym\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\DonMa\source\repos\NetCoreGym\NetCoreGym\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\DonMa\source\repos\NetCoreGym\NetCoreGym\obj\Debug\netcoreapp3.1\NetCoreGym.MvcApplicationPartsAssemblyInfo.cs

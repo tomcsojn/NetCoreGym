@@ -12,6 +12,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using NetCoreGym.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.OpenApi.Models;
 
 namespace NetCoreGym
 {
@@ -30,6 +31,15 @@ namespace NetCoreGym
             services.AddControllers();
             services.AddMvc();
 
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Title = "GymRegistryApi",
+                    Version = "v1"
+                });
+            });
+
             var connection = @"server=127.0.0.1;user id=Bartosz;database=gym;password=Niwobiruf_34;persistsecurityinfo=True";
             services.AddDbContext<gymContext>(options => options.UseMySql(connection));
 
@@ -41,6 +51,12 @@ namespace NetCoreGym
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+
+                app.UseSwagger();
+                app.UseSwaggerUI(c =>
+                {
+                    c.SwaggerEndpoint("/swagger/v1/swagger.json", "GymRegistryApi");
+                });
             }
 
             app.UseHttpsRedirection();
