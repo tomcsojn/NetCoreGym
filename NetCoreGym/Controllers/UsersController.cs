@@ -11,48 +11,48 @@ namespace NetCoreGym.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class InvoicesController : ControllerBase
+    public class UsersController : ControllerBase
     {
         private readonly gymContext _context;
 
-        public InvoicesController(gymContext context)
+        public UsersController(gymContext context)
         {
             _context = context;
         }
 
-        // GET: api/Invoices
+        // GET: api/Users
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Invoices>>> GetInvoices()
+        public async Task<ActionResult<IEnumerable<Users>>> GetUsers()
         {
-            return await _context.Invoices.ToListAsync();
+            return await _context.Users.ToListAsync();
         }
 
-        // GET: api/Invoices/5
+        // GET: api/Users/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Invoices>> GetInvoices(int id)
+        public async Task<ActionResult<Users>> GetUsers(int id)
         {
-            var invoices = await _context.Invoices.FindAsync(id);
+            var users = await _context.Users.FindAsync(id);
 
-            if (invoices == null)
+            if (users == null)
             {
                 return NotFound();
             }
 
-            return invoices;
+            return users;
         }
 
-        // PUT: api/Invoices/5
+        // PUT: api/Users/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutInvoices(int id, Invoices invoices)
+        public async Task<IActionResult> PutUsers(int id, Users users)
         {
-            if (id != invoices.Id)
+            if (id != users.MemberId)
             {
                 return BadRequest();
             }
 
-            _context.Entry(invoices).State = EntityState.Modified;
+            _context.Entry(users).State = EntityState.Modified;
 
             try
             {
@@ -60,7 +60,7 @@ namespace NetCoreGym.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!InvoicesExists(id))
+                if (!UsersExists(id))
                 {
                     return NotFound();
                 }
@@ -73,37 +73,37 @@ namespace NetCoreGym.Controllers
             return NoContent();
         }
 
-        // POST: api/Invoices
+        // POST: api/Users
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
-        public async Task<ActionResult<Invoices>> PostInvoices(Invoices invoices)
+        public async Task<ActionResult<Users>> PostUsers(Users users)
         {
-            _context.Invoices.Add(invoices);
+            _context.Users.Add(users);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetInvoices", new { id = invoices.Id }, invoices);
+            return CreatedAtAction("GetUsers", new { id = users.MemberId }, users);
         }
 
-        // DELETE: api/Invoices/5
+        // DELETE: api/Users/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<Invoices>> DeleteInvoices(int id)
+        public async Task<ActionResult<Users>> DeleteUsers(int id)
         {
-            var invoices = await _context.Invoices.FindAsync(id);
-            if (invoices == null)
+            var users = await _context.Users.FindAsync(id);
+            if (users == null)
             {
                 return NotFound();
             }
 
-            _context.Invoices.Remove(invoices);
+            _context.Users.Remove(users);
             await _context.SaveChangesAsync();
 
-            return invoices;
+            return users;
         }
 
-        private bool InvoicesExists(int id)
+        private bool UsersExists(int id)
         {
-            return _context.Invoices.Any(e => e.Id == id);
+            return _context.Users.Any(e => e.MemberId == id);
         }
     }
 }

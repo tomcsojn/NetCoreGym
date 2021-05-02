@@ -10,6 +10,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using NetCoreGym.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace NetCoreGym
 {
@@ -26,6 +28,11 @@ namespace NetCoreGym
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddMvc();
+
+            var connection = @"server=127.0.0.1;user id=Bartosz;database=gym;password=Niwobiruf_34;persistsecurityinfo=True";
+            services.AddDbContext<gymContext>(options => options.UseMySql(connection));
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

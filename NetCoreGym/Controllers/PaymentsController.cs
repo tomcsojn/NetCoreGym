@@ -11,48 +11,48 @@ namespace NetCoreGym.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class InvoicesController : ControllerBase
+    public class PaymentsController : ControllerBase
     {
         private readonly gymContext _context;
 
-        public InvoicesController(gymContext context)
+        public PaymentsController(gymContext context)
         {
             _context = context;
         }
 
-        // GET: api/Invoices
+        // GET: api/Payments
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Invoices>>> GetInvoices()
+        public async Task<ActionResult<IEnumerable<Payments>>> GetPayments()
         {
-            return await _context.Invoices.ToListAsync();
+            return await _context.Payments.ToListAsync();
         }
 
-        // GET: api/Invoices/5
+        // GET: api/Payments/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Invoices>> GetInvoices(int id)
+        public async Task<ActionResult<Payments>> GetPayments(int id)
         {
-            var invoices = await _context.Invoices.FindAsync(id);
+            var payments = await _context.Payments.FindAsync(id);
 
-            if (invoices == null)
+            if (payments == null)
             {
                 return NotFound();
             }
 
-            return invoices;
+            return payments;
         }
 
-        // PUT: api/Invoices/5
+        // PUT: api/Payments/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutInvoices(int id, Invoices invoices)
+        public async Task<IActionResult> PutPayments(int id, Payments payments)
         {
-            if (id != invoices.Id)
+            if (id != payments.PaymentId)
             {
                 return BadRequest();
             }
 
-            _context.Entry(invoices).State = EntityState.Modified;
+            _context.Entry(payments).State = EntityState.Modified;
 
             try
             {
@@ -60,7 +60,7 @@ namespace NetCoreGym.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!InvoicesExists(id))
+                if (!PaymentsExists(id))
                 {
                     return NotFound();
                 }
@@ -73,37 +73,37 @@ namespace NetCoreGym.Controllers
             return NoContent();
         }
 
-        // POST: api/Invoices
+        // POST: api/Payments
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
-        public async Task<ActionResult<Invoices>> PostInvoices(Invoices invoices)
+        public async Task<ActionResult<Payments>> PostPayments(Payments payments)
         {
-            _context.Invoices.Add(invoices);
+            _context.Payments.Add(payments);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetInvoices", new { id = invoices.Id }, invoices);
+            return CreatedAtAction("GetPayments", new { id = payments.PaymentId }, payments);
         }
 
-        // DELETE: api/Invoices/5
+        // DELETE: api/Payments/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<Invoices>> DeleteInvoices(int id)
+        public async Task<ActionResult<Payments>> DeletePayments(int id)
         {
-            var invoices = await _context.Invoices.FindAsync(id);
-            if (invoices == null)
+            var payments = await _context.Payments.FindAsync(id);
+            if (payments == null)
             {
                 return NotFound();
             }
 
-            _context.Invoices.Remove(invoices);
+            _context.Payments.Remove(payments);
             await _context.SaveChangesAsync();
 
-            return invoices;
+            return payments;
         }
 
-        private bool InvoicesExists(int id)
+        private bool PaymentsExists(int id)
         {
-            return _context.Invoices.Any(e => e.Id == id);
+            return _context.Payments.Any(e => e.PaymentId == id);
         }
     }
 }

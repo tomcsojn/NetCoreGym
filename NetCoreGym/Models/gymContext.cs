@@ -2,7 +2,11 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
-namespace NetCoreGym
+// Code scaffolded by EF Core assumes nullable reference types (NRTs) are not used or disabled.
+// If you have enabled NRTs for your project, then un-comment the following line:
+// #nullable disable
+
+namespace NetCoreGym.Models
 {
     public partial class gymContext : DbContext
     {
@@ -29,7 +33,7 @@ namespace NetCoreGym
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseMySql("server=localhost;database=gym;user=root;password=Niwobiruf_34;treattinyasboolean=true", x => x.ServerVersion("8.0.23-mysql"));
+                optionsBuilder.UseMySql("server=127.0.0.1;port:3306;user id=Bartosz;database=gym;password=Niwobiruf_34;allowuservariables=True;persistsecurityinfo=True", x => x.ServerVersion("8.0.23-mysql"));
             }
         }
 
