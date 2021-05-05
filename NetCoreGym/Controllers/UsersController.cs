@@ -105,5 +105,13 @@ namespace NetCoreGym.Controllers
         {
             return _context.Users.Any(e => e.MemberId == id);
         }
+
+        [HttpPost]
+        [Route("login")]
+        public int login([FromBody] User req)
+        {
+            return userHandler.Login(req.email, req.password);
+        }
+
     }
 }
