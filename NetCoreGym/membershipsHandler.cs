@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
@@ -24,11 +25,10 @@ namespace NetCoreGym
             conn.Open();
 
             //// Read user
-            MySqlCommand cmd = new MySqlCommand("CALL get_ticket_info(@ID,@n,@t,@e); select @n, @t, @e; ", conn);
+            MySqlCommand cmd = new MySqlCommand("get_ticket_info", conn);
+            cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@ID", id);
-            cmd.Parameters.AddWithValue("@n", "");
-            cmd.Parameters.AddWithValue("@t", "");
-            cmd.Parameters.AddWithValue("@e", "");
+
             MySqlDataReader reader = cmd.ExecuteReader();
             reader.Read();
             TicketInfo ticket = new TicketInfo
