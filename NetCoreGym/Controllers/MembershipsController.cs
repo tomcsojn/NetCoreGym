@@ -101,6 +101,13 @@ namespace NetCoreGym.Controllers
             return memberships;
         }
 
+
+        [HttpGet("getmembership/{id}")]
+        public TicketInfo login([FromBody] int id)
+        {
+            return membershipsHandler.getMembership(id);
+        }
+
         private bool MembershipsExists(int id)
         {
             return _context.Memberships.Any(e => e.MembershipId == id);
