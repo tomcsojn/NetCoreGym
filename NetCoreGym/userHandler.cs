@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
+using MySql.Data;
+using MySql.Data.MySqlClient;
 using System.Linq;
 using System.Threading.Tasks;
 using NetCoreGym.Models;
@@ -9,7 +10,7 @@ namespace NetCoreGym
 {
     public class userHandler
     {
-        const string connectionString = "server=127.0.0.1;uid=root;pwd=12345;database=Gym";
+        const string connectionString = "server=127.0.0.1;uid=root;database=Gym";
 
         //public static TicketInfo GetTicket(int id)
         //{
@@ -35,22 +36,28 @@ namespace NetCoreGym
         static public int Login(string mail, string pass)
         {
 
+            MySqlConnection conn = new MySqlConnection(connectionString);
 
-            SqlConnection conn = new SqlConnection(connectionString);
+
+
+
+
+
+            //SqlConnection conn = new SqlConnection(connectionString);
             conn.Open();
 
-            // Read user
-            SqlCommand cmd = new SqlCommand("SELECT role_id FROM users where email= @mail and pass=@pass ", conn);
+            //// Read user
+            MySqlCommand cmd = new MySqlCommand("SELECT role_id FROM users where email= @mail and pass=@pass ", conn);
             cmd.Parameters.AddWithValue("@mail", mail);
             cmd.Parameters.AddWithValue("@pass", pass);
-            SqlDataReader reader = cmd.ExecuteReader();
+            MySqlDataReader reader = cmd.ExecuteReader();
             reader.Read();
 
-            //User u = new User
-            //{
-            //    name = name,
+            ////User u = new User
+            ////{
+            ////    name = name,
 
-            //};
+            ////};
             int result;
             if (reader.HasRows)
             {
