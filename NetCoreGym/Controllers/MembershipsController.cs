@@ -103,7 +103,7 @@ namespace NetCoreGym.Controllers
 
 
         [HttpGet("getmembership/{id}")]
-        public TicketInfo login([FromBody] int id)
+        public TicketInfo getmembership(int id)
         {
             return membershipsHandler.getMembership(id);
         }

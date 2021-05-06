@@ -26,6 +26,9 @@ namespace NetCoreGym
             //// Read user
             MySqlCommand cmd = new MySqlCommand("CALL get_ticket_info(@ID,@n,@t,@e); select @n, @t, @e; ", conn);
             cmd.Parameters.AddWithValue("@ID", id);
+            cmd.Parameters.AddWithValue("@n", "");
+            cmd.Parameters.AddWithValue("@t", "");
+            cmd.Parameters.AddWithValue("@e", "");
             MySqlDataReader reader = cmd.ExecuteReader();
             reader.Read();
             TicketInfo ticket = new TicketInfo
